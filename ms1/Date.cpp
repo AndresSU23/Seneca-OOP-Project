@@ -32,33 +32,29 @@ using namespace std;
 namespace sdds {
 
 	bool Date::validate()  {
-		bool failed = false;
+		bool flag{};
+
 		if (m_year < currentYear || m_year > MaxYearValue)
 		{
 			m_state = "Invalid year in date";
 			m_state = 1;
-			failed = true;
+			flag = false;
 		}
-
-		if (!failed && (m_month < 1 || m_month > 12))
-		{
+		else if (m_month < 1 || m_month > 12){
 			m_state = "Invalid month in date";
 			m_state = 2;
-			failed = true;
+			flag = false;
 		}
-
-		if (!failed && (m_day < 1 || m_day > ut.daysOfMon(m_month, m_year)))
-		{
+		else if (m_day < 1 || m_day > ut.daysOfMon(m_month, m_year)) {
 			m_state = "Invalid day in date";
 			m_state = 3;
-			failed = true;
+			flag = false;
 		}
-
-		if (!failed)
-		{
+		else {
 			m_state.clear();
+			flag = true;
 		}
-		return failed;
+		return flag;
 	}
 	int Date::uniqueDataValue() const {
 		return m_year * 372 + m_month * 31 + m_day;
@@ -117,25 +113,27 @@ namespace sdds {
 		int inputDate{};
 		istr >> inputDate;
 
-		if (inputDate >= 1 && inputDate <= 9999) {
-			m_year = currentYear;
-			m_month = inputDate / 100;
-			m_day = inputDate % 100;
-		}
-		else if (inputDate >= 100000 && inputDate <= 999999) {
-			m_year = inputDate / 10000 + 2000;
-			inputDate %= 10000;
-			m_month = inputDate / 100;
-			m_day = inputDate % 100;
+		if (istr)
+		{
+			if (inputDate >= 1 && inputDate <= 9999) {
+				m_year = currentYear;
+				m_month = inputDate / 100;
+				m_day = inputDate % 100;
+			}
+			else if (inputDate >= 100000 && inputDate <= 999999) {
+				m_year = inputDate / 10000 + 2000;
+				inputDate %= 10000;
+				m_month = inputDate / 100;
+				m_day = inputDate % 100;
 
+			}
+
+
+			if (!validate()) istr.setstate(std::ios::badbit);
 		}
 		else {
 			m_state = "Invalid date value";
-			istr.setstate(std::ios::badbit);
-			return istr;
 		}
-
-		if (!validate()) istr.setstate(std::ios::badbit);
 		return istr;
 	}
 	std::ostream& operator<<(std::ostream& ostr,const Date& date) {
