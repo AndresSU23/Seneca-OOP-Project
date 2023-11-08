@@ -23,10 +23,7 @@ namespace sdds {
       m_testMode = testmode;
    }
    void Utils::alocpy(char*& destination, const char* source) {
-       if (destination) {
-           delete[] destination;
-           destination = nullptr;
-       }
+
        
        if (source) {
            destination = new char[strlen(source) + 1];

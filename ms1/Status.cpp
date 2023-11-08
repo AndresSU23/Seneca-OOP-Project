@@ -35,7 +35,6 @@ namespace sdds {
 		m_code = 0;
 	}
 	Status::~Status() {
-		delete[] m_desc;
 	}
 	Status& Status::operator=(const Status& source) {
 		*this = (const char*) source;
@@ -43,6 +42,9 @@ namespace sdds {
 		return *this;
 	}
 	Status& Status::operator=(const char* desc) {
+
+		delete[] m_desc;
+		m_desc = nullptr;
 		ut.alocpy(m_desc, desc);
 		return *this;
 	}
@@ -60,7 +62,8 @@ namespace sdds {
 		return !strlen(m_desc);
 	}
 	Status& Status::clear() {
-		ut.alocpy(m_desc, "");
+		delete[] m_desc;
+		m_desc = nullptr;
 		m_code = 0;
 		return *this;
 	}
