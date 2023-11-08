@@ -37,6 +37,7 @@ namespace sdds {
 		
 	}
 	Status::~Status() {
+		clear();
 	}
 	Status& Status::operator=(const Status& source) {
 		*this = (const char*) source;
