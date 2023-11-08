@@ -39,6 +39,7 @@ namespace sdds {
 		
 	public:
 		Date();
+		~Date();
 		Date(int year, int month, int day);
 		bool operator ==(const Date cmp) const;
 		bool operator !=(const Date cmp) const;

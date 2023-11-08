@@ -32,27 +32,27 @@ using namespace std;
 namespace sdds {
 
 	bool Date::validate()  {
-		bool flag = false;
+		bool flag{};
 
 		if (m_year < currentYear || m_year > MaxYearValue)
 		{
 			m_state = "Invalid year in date";
 			m_state = 1;
-			flag = true;
+			flag = false;
 		}
 		else if (m_month < 1 || m_month > 12){
 			m_state = "Invalid month in date";
 			m_state = 2;
-			flag = true;
+			flag = false;
 		}
-		else if(m_day < 1 || m_day > ut.daysOfMon(m_month, m_year)) {
+		else if (m_day < 1 || m_day > ut.daysOfMon(m_month, m_year)) {
 			m_state = "Invalid day in date";
 			m_state = 3;
-			flag = true;
+			flag = false;
 		}
-
-		if (!flag){
+		else {
 			m_state.clear();
+			flag = true;
 		}
 		return flag;
 	}
@@ -61,6 +61,9 @@ namespace sdds {
 	}
 	Date::Date() {
 		ut.getSystemDate(&m_year, &m_month, &m_day);
+	}
+	Date::~Date() {
+		m_state.clear();
 	}
 	Date::Date(int year, int month, int day) {
 		m_year = year;
