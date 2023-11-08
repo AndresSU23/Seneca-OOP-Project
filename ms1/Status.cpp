@@ -39,9 +39,14 @@ namespace sdds {
 	Status::~Status() {
 		clear();
 	}
-	Status& Status::operator=(const Status& source) {
-		*this = (const char*) source;
-		*this = (int)(source);
+	Status& Status::operator=(const Status& stat)
+	{
+		if (this != &stat)
+		{
+			m_code = stat.m_code;
+			ut.alocpy(m_desc, stat.m_desc);
+		}
+
 		return *this;
 	}
 	Status& Status::operator=(const char* desc) {
