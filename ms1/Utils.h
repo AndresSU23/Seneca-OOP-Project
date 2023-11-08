@@ -5,7 +5,14 @@
 // Version 1.0
 // Author  Fardad Soleimanloo
 // Description
+//			Name      : David Andres Sanchez Umbarila
+//			Student ID: 140273228
+//			Email     : dasanchez-umbarila@myseneca.ca
+/			Date      : 
 //
+//			I have done all the coding by myself and only copied the code
+//			 that my professor provided to complete my workshops and
+//			 assignments.
 // Revision History
 // -----------------------------------------------------------
 // Name                 Date            Reason
@@ -22,6 +29,10 @@ namespace sdds {
       void getSystemDate(int* year = nullptr, int* mon = nullptr, int* day = nullptr);
       int daysOfMon(int mon, int year)const;
       void testMode(bool testmode = true);
+
+      void alocpy(char*& destination, const char* source);
+      int getint(const char* prompt = nullptr);
+      int getint(int min, int max, const char* prompt = nullptr, const char* errMes = nullptr);
    };
    extern Utils ut;
 }
