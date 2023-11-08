@@ -31,6 +31,7 @@ namespace sdds {
 
 	Status::Status(const char* desc) {
 		m_code = 0;
+
 		m_desc = nullptr;
 
 		if (desc) ut.alocpy(m_desc, desc);
