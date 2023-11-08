@@ -58,6 +58,7 @@ namespace sdds {
 		{
 			m_state.clear();
 		}
+		return failed;
 	}
 	int Date::uniqueDataValue() const {
 		return m_year * 372 + m_month * 31 + m_day;
