@@ -32,29 +32,32 @@ using namespace std;
 namespace sdds {
 
 	bool Date::validate()  {
-		bool flag{};
-
+		bool failed = false;
 		if (m_year < currentYear || m_year > MaxYearValue)
 		{
 			m_state = "Invalid year in date";
 			m_state = 1;
-			flag = false;
+			failed = true;
 		}
-		else if (m_month < 1 || m_month > 12){
+
+		if (!failed && (m_month < 1 || m_month > 12))
+		{
 			m_state = "Invalid month in date";
 			m_state = 2;
-			flag = false;
+			failed = true;
 		}
-		else if (m_day < 1 || m_day > ut.daysOfMon(m_month, m_year)) {
+
+		if (!failed && (m_day < 1 || m_day > ut.daysOfMon(m_month, m_year)))
+		{
 			m_state = "Invalid day in date";
 			m_state = 3;
-			flag = false;
+			failed = true;
 		}
-		else {
+
+		if (!failed)
+		{
 			m_state.clear();
-			flag = true;
 		}
-		return flag;
 	}
 	int Date::uniqueDataValue() const {
 		return m_year * 372 + m_month * 31 + m_day;
