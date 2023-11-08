@@ -30,9 +30,11 @@ using namespace std;
 namespace sdds {
 
 	Status::Status(const char* desc) {
-		if (desc && strlen(desc)) ut.alocpy(m_desc, desc);
-		else m_desc = nullptr;
 		m_code = 0;
+		m_desc = nullptr;
+
+		if (desc) ut.alocpy(m_desc, desc);
+		
 	}
 	Status::~Status() {
 	}
@@ -43,8 +45,6 @@ namespace sdds {
 	}
 	Status& Status::operator=(const char* desc) {
 
-		delete[] m_desc;
-		m_desc = nullptr;
 		ut.alocpy(m_desc, desc);
 		return *this;
 	}
@@ -59,7 +59,7 @@ namespace sdds {
 		return m_desc;
 	}
 	Status::operator bool() const {
-		return !strlen(m_desc);
+		return !m_desc;
 	}
 	Status& Status::clear() {
 		delete[] m_desc;
