@@ -36,9 +36,6 @@ namespace sdds {
 		if (desc) ut.alocpy(m_desc, desc);
 		
 	}
-	Status::~Status() {
-		clear();
-	}
 	Status& Status::operator=(const Status& stat)
 	{
 		if (this != &stat)
