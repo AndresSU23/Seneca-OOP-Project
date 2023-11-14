@@ -64,14 +64,20 @@ namespace sdds {
 			cout << endl << "---------------------------------" << endl << "0- Exit" << endl << "> ";
 			
 			do {
+
 				cin >> input;
+				
 				if (cin.fail()) { 
+					cin.clear();
+					cin.ignore(10000, '\n');
 					cout << "Invalid Integer, retry: "; 
 					cin.clear();
-					cin.ignore('\n');
 					input = -1;
 				}
-				else if (input < 0 || input > index) cout << "Value out of range [0<=val<=" << index << "]: ";
+				else if (input < 0 || input > index) { 
+					cout << "Value out of range [0<=val<=" << index << "]: "; 
+					cin.clear();
+				}
 			} while (input < 0 || input > index);
 		}
 		else cout << "Invalid Menu!" << endl;

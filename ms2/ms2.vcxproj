@@ -143,12 +143,14 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Status.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AidMan.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Status.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
