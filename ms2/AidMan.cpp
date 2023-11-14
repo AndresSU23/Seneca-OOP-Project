@@ -34,8 +34,8 @@ namespace sdds {
 		int year, month, day;
 		ut.getSystemDate(&year, &month, &day);
 		cout << "Aid Management System" << endl << "Date: ";
-		cout << setfill('0') << setw(4) << year << " / "
-			<< setw(2) << month << " / "
+		cout << setfill('0') << setw(4) << year << "/"
+			<< setw(2) << month << "/"
 			<< setw(2) << day << endl;
 		cout << "Data file : " << ((m_fileName) ? m_fileName : "No file") << endl;
 		cout << "---------------------------------" << endl;
