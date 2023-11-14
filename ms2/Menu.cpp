@@ -68,11 +68,12 @@ namespace sdds {
 				if (cin.fail()) { 
 					cout << "Invalid Integer, retry: "; 
 					cin.clear();
-					cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					cin.ignore('\n');
+					input = -1;
 				}
 				else if (input < 0 || input > index) cout << "Value out of range [0<=val<=" << index << "]: ";
 				cin.ignore('\n');
-			} while (cin.fail() || input < 0 || input > index);
+			} while (input < 0 || input > index);
 		}
 		else cout << "Invalid Menu!" << endl;
 		return input;
