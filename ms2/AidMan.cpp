@@ -33,7 +33,7 @@ namespace sdds {
 	unsigned int AidMan::menu() const {
 		int year, month, day;
 		ut.getSystemDate(&year, &month, &day);
-		cout << "Aid Management System Prototype" << endl << "Date: ";
+		cout << "Aid Management System" << endl << "Date: ";
 		cout << setfill('0') << setw(4) << year << " / "
 			<< setw(2) << month << " / "
 			<< setw(2) << day << endl;
