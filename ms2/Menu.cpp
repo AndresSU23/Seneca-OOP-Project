@@ -68,6 +68,7 @@ namespace sdds {
 				if (cin.fail()) { 
 					cout << "Invalid Integer, retry: "; 
 					cin.clear();
+					cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				}
 				else if (input < 0 || input > index) cout << "Value out of range [0<=val<=" << index << "]: ";
 				cin.ignore('\n');
