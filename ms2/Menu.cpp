@@ -72,7 +72,6 @@ namespace sdds {
 					input = -1;
 				}
 				else if (input < 0 || input > index) cout << "Value out of range [0<=val<=" << index << "]: ";
-				cin.ignore('\n');
 			} while (input < 0 || input > index);
 		}
 		else cout << "Invalid Menu!" << endl;
