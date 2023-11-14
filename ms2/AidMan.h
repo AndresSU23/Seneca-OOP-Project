@@ -26,7 +26,7 @@
 namespace sdds {
 	class AidMan {
 		char* m_fileName{};
-		Menu m_menu{ "List Items\tAdd Item\tRemove Item\tUpdate Quantity\tSortShip Items New/Open Aid Database" };
+		Menu m_menu{ "List Items\tAdd Item\tRemove Item\tUpdate Quantity\tSort\tShip Items\tNew/Open Aid Database" };
 
 		unsigned int menu() const;
 
