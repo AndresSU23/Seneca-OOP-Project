@@ -74,7 +74,7 @@ namespace sdds {
 	}
 
 	void Menu::printSelection(unsigned int selection) {
-		int counter{ 1 };
+		unsigned int counter{ 1 };
 		for (size_t i = 0; i < strlen(m_content); i++) {
 			if (m_content[i] == '\t') {
 				counter++;
