@@ -1,13 +1,17 @@
-/* ------------------------------------------------------
-Final project Milestone 4
-Module: Perishable
-Filename: main.cpp
-Version 1.0
-Author: Fardad Soleimanloo   2022-03-27
-Revision History
------------------------------------------------------------
-Date          Reason
------------------------------------------------------------*/
+/***********************************************************************
+// Final project Milestone 4
+// Module: Perishable Test
+// File: main.cpp
+// Version 1.1
+// Author  Fardad Soleimanloo
+// Description
+//
+// Revision History
+// -----------------------------------------------------------
+// Name                 Date            Reason
+// fardad               23-11-4         Corrected the test to match
+//                                        correct_output.txt
+***********************************************************************/
 #include <iostream>
 #include <fstream>
 #include "iProduct.h"
@@ -16,12 +20,13 @@ using namespace std;
 using namespace sdds;
 void resetToOriginal();
 void entryAndSave();
-void descriptive();
+void fileAndRuleOf3();
+void display(Perishable P);
+void displayLinear(Perishable p);
 int main() {
    resetToOriginal();
    entryAndSave();
-   cout << "------------------------" << endl;
-   descriptive();
+   fileAndRuleOf3();
    return 0;
 }
 void resetToOriginal() {
@@ -34,7 +39,7 @@ void entryAndSave() {
    ofstream file("data.dat", ios::app);
    iProduct* p = new Perishable;
    cout << "Enter the following values: " << endl
-      << 
+      <<
       "4444\n"
       "44444\n"
       "11111\n"
@@ -42,7 +47,7 @@ void entryAndSave() {
       "22\n"
       "2\n"
       "22.22\n"
-      "221212\n"
+      "231212\n"
       "<ENTER>\n"<< "------------------------" << endl;
    p->readSku(cin);
    cin >> *p;
@@ -59,7 +64,7 @@ void entryAndSave() {
       "33\n"
       "3\n"
       "33.33\n"
-      "221212\n"
+      "231212\n"
       "Keep in room temperature\n" << "------------------------" << endl;
    p->readSku(cin);
    cin >> *p ;
@@ -74,11 +79,30 @@ void entryAndSave() {
    file.close();
    delete p;
 }
-void descriptive() {
+void fileAndRuleOf3() {
    ifstream file("data.dat");
    Perishable p;
+   Perishable last;
+   cout << "--------------------------------------------------------------------------------" << endl;
    while (p.load(file)) {
+      displayLinear(last);
+      display(p);
+      last = p;
+   }
+   displayLinear(last);
+}
+void display(Perishable p) {
+   if (p) {
+      cout << p
+         << "----------------------------------\nJust expiry date: "
+         << p.expiry() << endl;
+   }
+}
+void displayLinear(Perishable p) {
+   if (p) {
+      cout << "linear: ------------------------------------------------------------------------" << endl;
+      p.linear(true);
       cout << p << endl;
-      cout << "----------------------------------\nExpiry date: " << p.expiry() << "\n----------------------------------\n";
+      cout << "--------------------------------------------------------------------------------" << endl;
    }
 }

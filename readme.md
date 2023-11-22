@@ -5,13 +5,14 @@ V1.0
 
 ### Milestones
 
-|Milestone| Revision |  Overview<br />session |Comments |
-|------|:---:|:---:|:----|
-| [MS1](#milestone-1) | V1.0 | | |
-| [MS2](#milestone-2) | V1.0 |  |  |
-| [MS3](#milestone-3) | V1.0  |  |  |
-| [MS4](#milestone-4) | V1.0  | |  |
-| [MS5](#milestone-5) | V1.0 |  | |
+|Milestone| Revision | Comments |
+|------|:---:|:----|
+| [MS1](#milestone-1) | V1.0 |  |
+| [MS2](#milestone-2) | V1.0 |    |
+| [MS3](#milestone-3) | V1.0  |    |
+| [MS4](#milestone-4) | V1.0  |   |
+|                     | V1.1  | Correcte main.cpp to match<br/>correct_output.txt  |
+| [MS5](#milestone-5) | V1.0 |   |
 
 
 ## Use case
@@ -101,7 +102,7 @@ Final Project Milestone ?
 Module: Whatever
 Filename: Whatever.cpp
 Version 1.0
-Author	John Doe
+Author   John Doe
 Revision History
 -----------------------------------------------------------
 Date      Reason
@@ -598,7 +599,7 @@ Then it will run the main menu and return the selection made by the user.
 #### Construction
 The AidMan has only a one-argument constructor that receives a filename  and initializes the main menu with the following text as **the menu content**:
 ```text
-"List Items\tAdd Item\tRemove Item\tUpdate Quantity\tSortShip Items New/Open Aid Database"
+"List Items\tAdd Item\tRemove Item\tUpdate Quantity\tSort\tShip Items\tNew/Open Aid Database"
 ```
 The filename is copied and dynamically kept in the filename attribute only if it is not nullptr. If it is nullptr then the filename attribute will be nullptr as well. 
 
