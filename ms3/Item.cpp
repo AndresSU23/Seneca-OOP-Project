@@ -106,7 +106,6 @@ namespace sdds {
         char temp[1000]{};
         ifstr.getline(temp, 1000, '\t');
         ut.alocpy(m_description, temp);
-        /*char* temp = ut.readCString(ifstr, '\t');*/
 
 
         ifstr >> m_qty;

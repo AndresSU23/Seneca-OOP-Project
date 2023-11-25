@@ -36,8 +36,6 @@ namespace sdds {
 
       double getdouble(const char* prompt = nullptr);
       double getdouble(double min, double max, const char* prompt = nullptr, const char* errMes = nullptr);
-   
-      char* readCString(std::ifstream& ifs, char delimiter);
    };
    extern Utils ut;
 }

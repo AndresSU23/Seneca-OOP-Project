@@ -11,6 +11,9 @@
 // Name                 Date            Reason
 ***********************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
+
+#define INT_MAX 2147483647
+
 #include <iostream>
 #include <ctime>
 #include <cstring>
@@ -18,6 +21,7 @@
 #include <fstream>
 
 #include "Utils.h"
+
 using namespace std;
 namespace sdds {
    Utils ut;
@@ -102,22 +106,6 @@ namespace sdds {
        }
 
        return userInput;
-   }
-
-   char* Utils::readCString(std::ifstream& ifrs, char delimiter) {
-       const int bufferSize = 1000;
-       char buffer[bufferSize]{ '\0' };
-       ifrs.get();
-       int counter{ -1 };
-       do
-       {
-           counter++;
-           buffer[counter] = ifrs.get();
-
-       } while (buffer[counter] != '\t' && counter < bufferSize);
-       buffer[counter] = '\0';
-
-       return buffer;
    }
 
    void Utils::getSystemDate(int* year, int* mon, int* day) {
