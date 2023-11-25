@@ -48,11 +48,11 @@ namespace sdds {
     }
 
     int Item::qtyNeeded() const {
-        return m_qty;
+        return m_qtyNeeded;
     }
 
     int Item::qty() const {
-        return m_qtyNeeded;
+        return m_qty;
     }
 
     Item::operator double() const {
