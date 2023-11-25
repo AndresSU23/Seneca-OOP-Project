@@ -146,10 +146,10 @@ namespace sdds {
             else {
                 ostr << "AMA Item:" << std::endl;
                 ostr << m_sku << ": " << m_description << std::endl;
-                ostr << "Quantity Needed : " << m_qtyNeeded << std::endl;
-                ostr << "Quantity Available : " << m_qty << std::endl;
-                ostr << "Unit Price : $" << std::fixed << std::setprecision(2) << m_price << std::endl;
-                ostr << "Needed Purchase Fund : $" << std::fixed << std::setprecision(2) << (m_price * (m_qtyNeeded - m_qty)) << std::endl;
+                ostr << "Quantity Needed: " << m_qtyNeeded << std::endl;
+                ostr << "Quantity Available: " << m_qty << std::endl;
+                ostr << "Unit Price: $" << std::fixed << std::setprecision(2) << m_price << std::endl;
+                ostr << "Needed Purchase Fund: $" << std::fixed << std::setprecision(2) << (m_price * (m_qtyNeeded - m_qty)) << std::endl;
             }
         } 
         else {
