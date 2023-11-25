@@ -83,7 +83,7 @@ namespace sdds {
        while (!(std::cin >> userInput)) {
            std::cin.clear();
            std::cin.ignore(INT_MAX, '\n');
-           std::cout << "Invalid Integer, retry: ";
+           std::cout << "Invalid number, retry: ";
        }
 
        return userInput;
