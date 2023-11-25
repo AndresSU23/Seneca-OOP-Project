@@ -144,7 +144,7 @@ namespace sdds {
                     << std::setw(7) << std::fixed << std::setprecision(2) << m_price << " |";
             }
             else {
-                ostr << "AMA Item :" << std::endl;
+                ostr << "AMA Item:" << std::endl;
                 ostr << m_sku << ": " << m_description << std::endl;
                 ostr << "Quantity Needed : " << m_qtyNeeded << std::endl;
                 ostr << "Quantity Available : " << m_qty << std::endl;
