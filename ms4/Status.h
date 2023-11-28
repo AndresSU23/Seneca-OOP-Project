@@ -30,6 +30,7 @@ namespace sdds {
 
 	public:
 		Status(const char* desc = nullptr);
+		~Status();
 		Status& operator=(const Status& source);
 		Status& operator=(const char* desc);
 		Status& operator=(int code);
