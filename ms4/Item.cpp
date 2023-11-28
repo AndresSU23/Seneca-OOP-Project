@@ -180,6 +180,8 @@ namespace sdds {
         std::cout << "AMA Item:" << std::endl;
         std::cout << "SKU: " << m_sku << std::endl;
 
+        delete[] m_description;
+        m_description = nullptr;
         char temp[1000]{ '\0' };
         std::cout << "Description: ";
         istr.getline(temp, 1000, '\n');
