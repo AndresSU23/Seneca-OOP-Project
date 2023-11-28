@@ -1,5 +1,5 @@
 /***********************************************************************
-// Final project Milestone 1
+// Final project Milestone 4
 // Module: Date
 // File: Date.cpp
 // Version 1.0

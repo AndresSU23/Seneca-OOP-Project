@@ -1,5 +1,5 @@
 /***********************************************************************
-// Final project Milestone 1
+// Final project Milestone 4
 // Module: Date
 // File: Date.h
 // Version 1.0
