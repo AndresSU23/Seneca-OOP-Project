@@ -147,9 +147,9 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="iProduct.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Perishable.cpp" />
     <ClCompile Include="Status.cpp" />
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
