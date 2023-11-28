@@ -40,6 +40,7 @@ namespace sdds {
 	{
 		Item::operator= (src);
 		m_expiry = src.m_expiry;
+		delete[] m_handling;
 		ut.alocpy(m_handling, src.m_handling);
 		return *this;
 	}

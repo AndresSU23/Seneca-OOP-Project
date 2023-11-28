@@ -55,6 +55,7 @@ namespace sdds {
         m_price = src.m_price;
         m_qty = src.m_qty;
         m_qtyNeeded = src.m_qtyNeeded;
+        delete[] m_description;
         ut.alocpy(m_description, src.m_description);
         m_linear = src.m_linear;
         m_status = src.m_status;
