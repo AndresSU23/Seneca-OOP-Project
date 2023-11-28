@@ -45,6 +45,8 @@ namespace sdds {
 		if (this != &stat)
 		{
 			m_code = stat.m_code;
+			delete[] m_desc;
+			m_desc = nullptr;
 			ut.alocpy(m_desc, stat.m_desc);
 		}
 
