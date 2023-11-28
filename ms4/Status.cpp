@@ -44,16 +44,16 @@ namespace sdds {
 	{
 		if (this != &stat)
 		{
+			clear();
 			m_code = stat.m_code;
-			delete[] m_desc;
-			m_desc = nullptr;
 			ut.alocpy(m_desc, stat.m_desc);
 		}
 
 		return *this;
 	}
 	Status& Status::operator=(const char* desc) {
-
+		delete[] m_desc;
+		m_desc = nullptr;
 		ut.alocpy(m_desc, desc);
 		return *this;
 	}
