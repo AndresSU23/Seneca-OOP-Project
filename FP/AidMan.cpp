@@ -38,7 +38,7 @@ namespace sdds {
 		cout << "Aid Management System" << endl << "Date: ";
 		cout << date << endl; //Printing Date
 		cout << "Data file: " << ((m_fileName) ? m_fileName : "No file") << endl; //Printing the chosen file
-
+		cout << "---------------------------------" << endl;
 		return m_menu.run();
 	}
 	void AidMan::save() {
