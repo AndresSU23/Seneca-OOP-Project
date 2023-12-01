@@ -98,7 +98,7 @@ namespace sdds {
 			int peek = file.peek(); //Looking in ASCII the next char
 			
 			if (peek >= 49 && peek <= 51) { //If its between 1 and 3 inclusively
-				m_items[i] = new Perishable(); 
+				m_items[i] = &Perishable(); 
 				if (m_items[i]->load(file)) m_noItems++; //If loaded correctly increment the number of items
 				else {									 //If not delete the created Perishable
 					delete[] m_items[i];
@@ -106,7 +106,7 @@ namespace sdds {
 				}
 			}
 			else if (peek >= 52 && peek <= 57) { //If its between 4 and 9 inclusively
-				m_items[i] = new Item();
+				m_items[i] = &Item();
 				if (m_items[i]->load(file)) m_noItems++; //If loaded correctly increment the number of items
 				else { 									 //If not delete the created Item
 					delete[] m_items[i];
@@ -204,7 +204,7 @@ namespace sdds {
 	void AidMan::listItems() {
 		if (list()) {
 			cin.ignore();
-			cout << "Enter row number to display details or <ENTER> to continue: " << endl << "> ";
+			cout << "Enter row number to display details or <ENTER> to continue:" << endl << "> ";
 			if (cin.peek() != '\n') {
 				int row = ut.getint();
 				m_items[row - 1]->linear(false);
