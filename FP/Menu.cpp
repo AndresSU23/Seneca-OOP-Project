@@ -1,5 +1,5 @@
 /***********************************************************************
-// Final project Milestone 2
+// Final project Milestone 5
 // Module: Menu
 // File: Menu.cpp
 // Version 1.0
@@ -63,9 +63,9 @@ namespace sdds {
 			}
 			if (div){
 				cout << endl;
-				for (int i = 0; i < size; i++) cout << '-';
-				cout << endl << "0- Exit" << endl << "> ";
+				for (int i = 0; i < size; i++) cout << '-';	
 			}
+			cout << endl << "0- Exit" << endl << "> ";
 			
 			do {
 

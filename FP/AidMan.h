@@ -1,5 +1,5 @@
 /***********************************************************************
-// Final project Milestone 2
+// Final project Milestone 5
 // Module: AidMan
 // File: AidMan.h
 // Version 1.0
@@ -38,6 +38,7 @@ namespace sdds {
 		bool load();
 		int list(const char* sub_desc = nullptr);
 		int search(int sku) const;
+		void remove(int index);
 	public:
 		AidMan() = default;
 		AidMan(const char* fileName);

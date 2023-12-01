@@ -1,5 +1,5 @@
 /***********************************************************************
-// Final project Milestone 2
+// Final project Milestone 5
 // Module: AidMan
 // File: AidMan.cpp
 // Version 1.0
@@ -45,7 +45,7 @@ namespace sdds {
 		if (m_fileName) { //Checking if theres is a filename
 			ofstream file(m_fileName); //Opening file
 			for (int i = 0; i < m_noItems; i++) {
-				m_items[i]->save(file); //Calling the save function of each item
+				m_items[i]->save(file) << endl; //Calling the save function of each item
 			}
 			file.close(); //Closing the file
 		}
@@ -134,8 +134,8 @@ namespace sdds {
 			}
 			else {
 				if (m_items[i]->subString(sub_desc)) { //Check if the substring is present
-					m_items[i]->linear(false);
-					cout << std::setw(4) << std::setfill(' ') << std::right << (i + 1) << " |";
+					m_items[i]->linear(true);
+					cout << std::setw(4) << std::setfill(' ') << std::right << (i + 1) << " | ";
 					m_items[i]->display(cout) << endl;
 					counter++;
 				}
@@ -151,6 +151,16 @@ namespace sdds {
 			if (m_items[i]->operator== (sku)) return i;
 		}
 		return -1;
+	}
+	void AidMan::remove(int index) {
+		//Removex the object in the index
+		delete m_items[index];
+		m_items[index] = nullptr;
+		//Moves the other objest to the left 
+		for (int i = index; i < m_noItems - 1; i++) {
+			m_items[i] = m_items[i + 1];
+		}
+		m_items[--m_noItems] = nullptr; //Reduces the amount of items and puts nullptr on the last one
 	}
 	AidMan::AidMan(const char* fileName) {
 		if (fileName) {
@@ -262,6 +272,30 @@ namespace sdds {
 	}
 
 	void AidMan::removeItem() {
+		cin.ignore();
+		cout << "Item description: ";
+		char input[1000]{ '\0' };
+		cin.getline(input, 1000, '\n');
+		if (list(input)) {
+			int sku = ut.getint("Enter SKU: ");
+			int index = search(sku);
+			if (index >= 0) {
+				cout << "Following item will be removed:" << endl;
+				m_items[index]->linear(false);
+				m_items[index]->display(cout) << endl;
+				
+				cout << "Are you sure?" << endl;
+				Menu menu("Yes!");
+				if (menu.run(false, 0)) {
+					remove(index);
+					save();
+					cout << "Item removed!" << endl;
+				}
+				else cout << "Aborted!" << endl;
+			}
+			else cout << "SKU not found!" << endl;
+		}
+		else cout << "No matches found!" << endl;
 	}
 
 	void AidMan::updateQuantity() {

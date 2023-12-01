@@ -1,5 +1,5 @@
 /***********************************************************************
-// Final project Milestone 2
+// Final project Milestone 5
 // Module: Menu
 // File: Menu.h
 // Version 1.0
