@@ -237,7 +237,10 @@ namespace sdds {
 				int sku = m_items[m_noItems]->readSku(cin);		//Reads and saves the sku
 				if (search(sku) < 0) {	//If the sku doesnt exist
 					m_items[m_noItems]->read(cin);	//Reads the rest of info 
-					if (m_items[m_noItems]->operator bool()) m_noItems++;	//If it loaded correclty the size is incremented
+					if (m_items[m_noItems]->operator bool()) {	//If it loaded correclty the size is incremented and added to the file
+						m_noItems++;
+						save();			
+					}
 					else {
 						delete m_items[m_noItems];	//If not remove safely the created object
 						m_items[m_noItems] = nullptr;
