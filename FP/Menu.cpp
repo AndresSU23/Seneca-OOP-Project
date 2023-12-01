@@ -49,7 +49,7 @@ namespace sdds {
 		delete[] m_content;
 		m_content = nullptr;
 	}
-	unsigned int Menu::run() const {
+	unsigned int Menu::run(bool div, int size) const {
 		int input{ 0 };
 		if (m_content) {
 			int index{ 1 };
@@ -61,7 +61,11 @@ namespace sdds {
 				} 
 				else cout << m_content[i];
 			}
-			cout << endl << "---------------------------------" << endl << "0- Exit" << endl << "> ";
+			if (div){
+				cout << endl;
+				for (int i = 0; i < size; i++) cout << '-';
+				cout << endl << "0- Exit" << endl << "> ";
+			}
 			
 			do {
 

@@ -28,7 +28,7 @@ namespace sdds {
 	public:
 		Menu(const char* content);
 		~Menu();
-		unsigned int run() const;
+		unsigned int run(bool div = true, int size = 33) const;
 		void printSelection(unsigned int selection);
 	};
 }

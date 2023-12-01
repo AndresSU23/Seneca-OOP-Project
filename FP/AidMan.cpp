@@ -69,8 +69,8 @@ namespace sdds {
 			if (file.is_open()) { //Check if the file was openned correctly
 				cout << "Failed to open " << m_fileName << " for reading!" << endl;
 				cout << "Would you like to create a new data file?" << endl;
-				cout << "1- Yes!" << endl << "0 - Exit" << endl << "> ";
-				if (ut.getint(0,1)) { //Getting User menu input
+				Menu menu("1- Yes!");
+				if (menu.run(false)) { //Getting User menu input
 					char temp[1000]{ '\0' };
 					cin.getline(temp, 1000, '\n'); //Getting file in temporary var
 					delete[] m_fileName;
@@ -230,7 +230,7 @@ namespace sdds {
 		if (m_noItems >= sdds_max_num_items) cout << "Database full!" << endl;
 		else {
 			Menu itemMenu("Perishable\tNon-Perishable");	//Creates a menu item with the item optionss
-			int input = itemMenu.run();
+			int input = itemMenu.run(true, 17);
 			if (input) {	//Checks input is not 0
 				if (input == 1) m_items[m_noItems] = new Perishable;	//If 1 creates a Perishable object in the last avialable position 
 				else m_items[m_noItems] = new Item;		//If 2 creates an Non-Perishable object in the last avialable position
