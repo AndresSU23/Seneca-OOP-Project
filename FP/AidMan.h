@@ -39,6 +39,9 @@ namespace sdds {
 		int list(const char* sub_desc = nullptr);
 		int search(int sku) const;
 		void remove(int index);
+		bool smallerDiffQty(const iProduct* p1, const iProduct* p2) const;
+		void swap(iProduct*& a, iProduct*& b);
+		void descendingSort(iProduct* arr[], int size);
 	public:
 		AidMan() = default;
 		AidMan(const char* fileName);

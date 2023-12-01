@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClCompile Include="AidMan.cpp" />
     <ClCompile Include="Date.cpp" />
-    <ClCompile Include="main54.cpp" />
+    <ClCompile Include="main56.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Perishable.cpp" />
