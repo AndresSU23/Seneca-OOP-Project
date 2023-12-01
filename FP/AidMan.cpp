@@ -154,6 +154,7 @@ namespace sdds {
 		}
 	}
 	AidMan::~AidMan() {
+		deallocate();
 		delete[] m_fileName;
 		m_fileName = nullptr;	
 	}
