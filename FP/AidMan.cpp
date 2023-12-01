@@ -52,7 +52,7 @@ namespace sdds {
 	}
 	void AidMan::deallocate() {
 		for (int i = 0; i < m_noItems; i++) {
-			delete[] m_items[i]; //Cleaning the classes
+			delete m_items[i]; //Cleaning the classes
 			m_items[i] = nullptr;
 		}
 		m_noItems = 0; //Reseting the number of items
@@ -94,7 +94,8 @@ namespace sdds {
 		//Readinf from the verified file 
 
 		ifstream file(m_fileName); //Opening the reading file
-		for (int i = 0; i < sdds_max_num_items; i++) {
+		int i;
+		for (i = 0; i < sdds_max_num_items; i++) {
 			int peek = file.peek(); //Looking in ASCII the next char
 			
 			if (peek >= 49 && peek <= 51) { //If its between 1 and 3 inclusively
@@ -154,7 +155,7 @@ namespace sdds {
 	}
 	AidMan::~AidMan() {
 		delete[] m_fileName;
-		m_fileName = nullptr;
+		m_fileName = nullptr;	
 	}
 	void AidMan::run() {
 		unsigned int input{};
