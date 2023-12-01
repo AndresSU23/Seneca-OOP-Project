@@ -98,7 +98,7 @@ namespace sdds {
 			int peek = file.peek(); //Looking in ASCII the next char
 			
 			if (peek >= 49 && peek <= 51) { //If its between 1 and 3 inclusively
-				m_items[i] = new Perishable(); 
+				m_items[i] = new Perishable; 
 				if (m_items[i]->load(file)) m_noItems++; //If loaded correctly increment the number of items
 				else {									 //If not delete the created Perishable
 					delete m_items[i];
@@ -106,7 +106,7 @@ namespace sdds {
 				}
 			}
 			else if (peek >= 52 && peek <= 57) { //If its between 4 and 9 inclusively
-				m_items[i] = new Item();
+				m_items[i] = new Item;
 				if (m_items[i]->load(file)) m_noItems++; //If loaded correctly increment the number of items
 				else { 									 //If not delete the created Item
 					delete m_items[i];
@@ -135,7 +135,7 @@ namespace sdds {
 				if (m_items[i]->subString(sub_desc)) { //Check if the substring is present
 					m_items[i]->linear(false);
 					cout << std::setw(4) << std::setfill(' ') << std::right << (i + 1) << " |";
-					m_items[i]->display(cout) << endl << endl;
+					m_items[i]->display(cout) << endl;
 					counter++;
 				}
 			}
@@ -155,7 +155,6 @@ namespace sdds {
 	AidMan::~AidMan() {
 		delete[] m_fileName;
 		m_fileName = nullptr;
-		deallocate();
 	}
 	void AidMan::run() {
 		unsigned int input{};
@@ -209,7 +208,7 @@ namespace sdds {
 			if (cin.peek() != '\n') {
 				int row = ut.getint();
 				m_items[row - 1]->linear(false);
-				m_items[row - 1]->display(cout);
+				m_items[row - 1]->display(cout) << endl;
 			}
 			else {
 				cin.ignore();
