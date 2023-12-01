@@ -135,7 +135,7 @@ namespace sdds {
 				if (m_items[i]->subString(sub_desc)) { //Check if the substring is present
 					m_items[i]->linear(false);
 					cout << std::setw(4) << std::setfill(' ') << std::right << (i + 1) << " |";
-					m_items[i]->display(cout) << endl;
+					m_items[i]->display(cout) << endl << endl;
 					counter++;
 				}
 			}
@@ -155,6 +155,7 @@ namespace sdds {
 	AidMan::~AidMan() {
 		delete[] m_fileName;
 		m_fileName = nullptr;
+		deallocate();
 	}
 	void AidMan::run() {
 		unsigned int input{};
