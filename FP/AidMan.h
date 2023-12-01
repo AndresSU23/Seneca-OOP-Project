@@ -37,6 +37,7 @@ namespace sdds {
 		void deallocate();
 		bool load();
 		int list(const char* sub_desc = nullptr);
+		int search(int sku) const;
 	public:
 		AidMan() = default;
 		AidMan(const char* fileName);

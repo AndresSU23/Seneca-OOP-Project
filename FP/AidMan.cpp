@@ -144,6 +144,14 @@ namespace sdds {
 		cout << "-----+-------+-------------------------------------+------+------+---------+-----------" << endl;
 		return counter;
 	}
+	int AidMan::search(int sku) const {
+		//Returns the index of the matching item, or -1 in case is not found
+		for (int i = 0; i < m_noItems; i++)
+		{
+			if (m_items[i]->operator== (sku)) return i;
+		}
+		return -1;
+	}
 	AidMan::AidMan(const char* fileName) {
 		if (fileName) {
 			m_fileName = new char[strlen(fileName) + 1];
@@ -219,6 +227,32 @@ namespace sdds {
 	}
 
 	void AidMan::addItem() {
+		if (m_noItems >= sdds_max_num_items) cout << "Database full!" << endl;
+		else {
+			Menu itemMenu("Perishable\tNon-Perishable");	//Creates a menu item with the item optionss
+			int input = itemMenu.run();
+			if (input) {	//Checks input is not 0
+				if (input == 1) m_items[m_noItems] = new Perishable;	//If 1 creates a Perishable object in the last avialable position 
+				else m_items[m_noItems] = new Item;		//If 2 creates an Non-Perishable object in the last avialable position
+				int sku = m_items[m_noItems]->readSku(cin);		//Reads and saves the sku
+				if (search(sku) < 0) {	//If the sku doesnt exist
+					m_items[m_noItems]->read(cin);	//Reads the rest of info 
+					if (m_items[m_noItems]->operator bool()) m_noItems++;	//If it loaded correclty the size is incremented
+					else {
+						delete m_items[m_noItems];	//If not remove safely the created object
+						m_items[m_noItems] = nullptr;
+					}
+				}
+				else {	//If the sku exist
+					cout << "Sku: " << sku << " is already in the system, try updating quantity instead." << endl;
+					delete m_items[m_noItems];	//Removes the created safely the created object
+					m_items[m_noItems] = nullptr;
+				}
+			}
+			else { //If user selection is 0
+				cout << "Aborted" << endl;
+			}
+		}
 	}
 
 	void AidMan::removeItem() {
