@@ -240,6 +240,8 @@ namespace sdds {
 					if (m_items[m_noItems]->operator bool()) { //If it loaded correclty the size is incremented
 						ofstream file(m_fileName, ios::app);
 						m_items[m_noItems]->save(file);
+						file << '\n';
+						file.close();
 						m_noItems++;
 					}
 					else {
