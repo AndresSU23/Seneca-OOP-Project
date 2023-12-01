@@ -1,5 +1,5 @@
 /***********************************************************************
-// Final project Milestone
+// Final project Milestone 4
 // Module: Perishable
 // File: Perishable.h
 // Version 1.0

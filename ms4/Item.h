@@ -1,5 +1,5 @@
 /***********************************************************************
-// Final project Milestone 3
+// Final project Milestone 4
 // Module: Item
 // File: Item.h
 // Version 1.0
