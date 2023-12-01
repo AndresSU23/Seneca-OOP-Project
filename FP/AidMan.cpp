@@ -43,7 +43,7 @@ namespace sdds {
 	}
 	void AidMan::save() {
 		if (m_fileName) { //Checking if theres is a filename
-			ofstream file(m_fileName, ios::app); //Opening file
+			ofstream file(m_fileName); //Opening file
 			for (int i = 0; i < m_noItems; i++) {
 				m_items[i]->save(file); //Calling the save function of each item
 			}
@@ -205,7 +205,6 @@ namespace sdds {
 					m_menu.printSelection(7);
 					loadDatabase();
 				}
-				save();
 				cout << endl;
 			}
 		} while (input != 0);
@@ -238,7 +237,11 @@ namespace sdds {
 				int sku = m_items[m_noItems]->readSku(cin);		//Reads and saves the sku
 				if (search(sku) < 0) {	//If the sku doesnt exist
 					m_items[m_noItems]->read(cin);	//Reads the rest of info 
-					if (m_items[m_noItems]->operator bool()) m_noItems++;	//If it loaded correclty the size is incremented
+					if (m_items[m_noItems]->operator bool()) { //If it loaded correclty the size is incremented
+						ofstream file(m_fileName, ios::app);
+						m_items[m_noItems]->save(file);
+						m_noItems++;
+					}
 					else {
 						delete m_items[m_noItems];	//If not remove safely the created object
 						m_items[m_noItems] = nullptr;
