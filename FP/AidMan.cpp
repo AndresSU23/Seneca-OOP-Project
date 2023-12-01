@@ -101,7 +101,7 @@ namespace sdds {
 				m_items[i] = new Perishable(); 
 				if (m_items[i]->load(file)) m_noItems++; //If loaded correctly increment the number of items
 				else {									 //If not delete the created Perishable
-					delete[] & m_items[i];
+					delete[] m_items[i];
 					m_items[i] = nullptr;
 				}
 			}
@@ -109,7 +109,7 @@ namespace sdds {
 				m_items[i] = new Item();
 				if (m_items[i]->load(file)) m_noItems++; //If loaded correctly increment the number of items
 				else { 									 //If not delete the created Item
-					delete[] & m_items[i];
+					delete[] m_items[i];
 					m_items[i] = nullptr;
 				}
 			}
@@ -195,7 +195,7 @@ namespace sdds {
 					m_menu.printSelection(7);
 					loadDatabase();
 				}
-				cout << endl << endl;
+				cout << endl;
 			}
 		} while (input != 0);
 		
