@@ -24,6 +24,7 @@
 #include <cstring>
 
 #include "Menu.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -49,7 +50,7 @@ namespace sdds {
 		delete[] m_content;
 		m_content = nullptr;
 	}
-	unsigned int Menu::run(bool div, int size) const {
+	unsigned int Menu::run(int size) const {
 		int input{ 0 };
 		if (m_content) {
 			int index{ 1 };
@@ -61,28 +62,11 @@ namespace sdds {
 				} 
 				else cout << m_content[i];
 			}
-			if (div){
-				cout << endl;
-				for (int i = 0; i < size; i++) cout << '-';	
-			}
-			cout << endl << "0- Exit" << endl << "> ";
-			
-			do {
-
-				cin >> input;
-				
-				if (cin.fail()) { 
-					cin.clear();
-					cin.ignore(10000, '\n');
-					cout << "Invalid Integer, retry: "; 
-					cin.clear();
-					input = -1;
-				}
-				else if (input < 0 || input > index) { 
-					cout << "Value out of range [0<=val<=" << index << "]: "; 
-					cin.clear();
-				}
-			} while (input < 0 || input > index);
+			cout << endl;
+			for (int i = 0; i < size; i++) cout << '-';
+			(size) && (cout << endl);
+			cout << "0- Exit" << endl << "> ";
+			input = ut.getint(0, index);
 		}
 		else cout << "Invalid Menu!" << endl;
 		return input;

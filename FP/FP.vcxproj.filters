@@ -39,7 +39,7 @@
     <ClCompile Include="Perishable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main52.cpp">
+    <ClCompile Include="main54.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

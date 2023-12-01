@@ -184,6 +184,7 @@ namespace sdds {
 			else {
 				if (m_fileName) { //Check if filename is given
 					m_menu.printSelection(input);
+					cin.ignore();
 					switch (input)
 					{
 					case 1:
@@ -223,7 +224,6 @@ namespace sdds {
 
 	void AidMan::listItems() {
 		if (list()) {
-			cin.ignore();
 			cout << "Enter row number to display details or <ENTER> to continue:" << endl << "> ";
 			if (cin.peek() != '\n') {
 				int row = ut.getint();
@@ -240,7 +240,7 @@ namespace sdds {
 		if (m_noItems >= sdds_max_num_items) cout << "Database full!" << endl;
 		else {
 			Menu itemMenu("Perishable\tNon-Perishable");	//Creates a menu item with the item optionss
-			int input = itemMenu.run(true, 17);
+			int input = itemMenu.run(17);
 			if (input) {	//Checks input is not 0
 				if (input == 1) m_items[m_noItems] = new Perishable;	//If 1 creates a Perishable object in the last avialable position 
 				else m_items[m_noItems] = new Item;		//If 2 creates an Non-Perishable object in the last avialable position
@@ -272,7 +272,6 @@ namespace sdds {
 	}
 
 	void AidMan::removeItem() {
-		cin.ignore();
 		cout << "Item description: ";
 		char input[1000]{ '\0' };
 		cin.getline(input, 1000, '\n'); //Gets User description
@@ -286,7 +285,7 @@ namespace sdds {
 				
 				cout << "Are you sure?" << endl;
 				Menu menu("Yes!");
-				if (menu.run(false, 0)) {
+				if (menu.run(0)) {
 					remove(index); //Removes the index and Saves the items
 					save();
 					cout << "Item removed!" << endl;
@@ -299,6 +298,46 @@ namespace sdds {
 	}
 
 	void AidMan::updateQuantity() {
+		cout << "Item description: ";
+		char input[1000]{ '\0' };
+		cin.getline(input, 1000, '\n'); //Gets User description
+		if (list(input)) {
+			int sku = ut.getint("Enter SKU: ");
+			int index = search(sku); //Searches for the given sku
+			if (index >= 0) {
+				Menu menu("Add\tReduce");
+				switch(menu.run(0)) {
+				case 1:
+					if (m_items[index]->qty() == m_items[index]->qtyNeeded()) {
+						cout << "Quantity Needed already fulfilled!" << endl;
+					}
+					else {
+						int added = ut.getint(1, m_items[index]->qtyNeeded(), "Quantity to add: ");
+						m_items[index]->operator+= (added);
+						cout << added << " items added!" << endl;
+						save();
+					}
+					break;
+				case 2:
+					if (m_items[index]->qty() == 0) {
+						cout << "There are no Items to reduce!" << endl;
+					}
+					else {
+						int reduced = ut.getint(1, m_items[index]->qty(), "Quantity to reduce: ");
+						m_items[index]->operator-= (reduced);
+						cout << reduced << " items removed!" << endl;
+						save();
+					}
+					break;
+				case 0:
+				default:
+					cout << "Aborted!" << endl;
+					break;
+				}
+			}
+			else cout << "SKU not found!" << endl;
+		}
+		else cout << "No matches found!" << endl;
 	}
 
 	void AidMan::sort() {
