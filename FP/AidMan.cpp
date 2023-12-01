@@ -44,14 +44,14 @@ namespace sdds {
 	void AidMan::save() {
 		if (m_fileName) { //Checking if theres is a filename
 			ofstream file(m_fileName, ios::app); //Opening file
-			for (size_t i = 0; i < m_noItems; i++) {
+			for (int i = 0; i < m_noItems; i++) {
 				m_items[i]->save(file); //Calling the save function of each item
 			}
 			file.close(); //Closing the file
 		}
 	}
 	void AidMan::deallocate() {
-		for (size_t i = 0; i < m_noItems; i++) {
+		for (int i = 0; i < m_noItems; i++) {
 			delete[] m_items[i]; //Cleaning the classes
 			m_items[i] = nullptr;
 		}
@@ -66,7 +66,6 @@ namespace sdds {
 
 		if (m_fileName) { //Checking if the file exists
 			ifstream file(m_fileName); //Opening check for existence
-			bool test = !file.is_open();
 			if (file.is_open()) { //Check if the file was openned correctly
 				cout << "Failed to open " << m_fileName << " for reading!" << endl;
 				cout << "Would you like to create a new data file?" << endl;
@@ -95,7 +94,7 @@ namespace sdds {
 		//Readinf from the verified file 
 
 		ifstream file(m_fileName); //Opening the reading file
-		for (size_t i = 0; i < sdds_max_num_items; i++) {
+		for (int i = 0; i < sdds_max_num_items; i++) {
 			int peek = file.peek(); //Looking in ASCII the next char
 			
 			if (peek >= 49 && peek <= 51) { //If its between 1 and 3 inclusively
@@ -124,7 +123,7 @@ namespace sdds {
 		int counter{0};
 		cout << " ROW |  SKU  | Description                         | Have | Need |  Price  | Expiry" << endl;
 		cout << "-----+-------+-------------------------------------+------+------+---------+-----------" << endl;
-		for (size_t i = 0; i < m_noItems; i++)
+		for (int i = 0; i < m_noItems; i++)
 		{
 			if (!sub_desc) { //Check if the substring is given
 				m_items[i]->linear(true); //Changes the format of the product
