@@ -371,11 +371,10 @@ namespace sdds {
 		for (int i = 0; i < m_noItems; i++)	{
 			if (m_items[i]->qty() == m_items[i]->qtyNeeded()) {
 				m_items[i]->linear(true);
-				shipFile << std::setw(4) << std::setfill(' ') << std::right << (i + 1) << " | ";	//Formats Row
+				shipFile << std::setw(4) << std::setfill(' ') << std::right << (++counter) << " | ";	//Formats Row and Increments counter
 				m_items[i]->display(shipFile) << endl;	//Prints in file item info
 				remove(i); //Removes the index and Saves the items
 				i--;	//Rewinds the index to count for the deleted item
-				counter++;
 			}
 		}
 		shipFile << "-----+-------+-------------------------------------+------+------+---------+-----------" << endl;
