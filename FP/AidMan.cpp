@@ -98,18 +98,18 @@ namespace sdds {
 			int peek = file.peek(); //Looking in ASCII the next char
 			
 			if (peek >= 49 && peek <= 51) { //If its between 1 and 3 inclusively
-				m_items[i] = &Perishable(); 
+				m_items[i] = new Perishable(); 
 				if (m_items[i]->load(file)) m_noItems++; //If loaded correctly increment the number of items
 				else {									 //If not delete the created Perishable
-					delete[] m_items[i];
+					delete m_items[i];
 					m_items[i] = nullptr;
 				}
 			}
 			else if (peek >= 52 && peek <= 57) { //If its between 4 and 9 inclusively
-				m_items[i] = &Item();
+				m_items[i] = new Item();
 				if (m_items[i]->load(file)) m_noItems++; //If loaded correctly increment the number of items
 				else { 									 //If not delete the created Item
-					delete[] m_items[i];
+					delete m_items[i];
 					m_items[i] = nullptr;
 				}
 			}
