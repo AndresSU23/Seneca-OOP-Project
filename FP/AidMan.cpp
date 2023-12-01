@@ -275,10 +275,10 @@ namespace sdds {
 		cin.ignore();
 		cout << "Item description: ";
 		char input[1000]{ '\0' };
-		cin.getline(input, 1000, '\n');
+		cin.getline(input, 1000, '\n'); //Gets User description
 		if (list(input)) {
 			int sku = ut.getint("Enter SKU: ");
-			int index = search(sku);
+			int index = search(sku); //Searches for the given sku
 			if (index >= 0) {
 				cout << "Following item will be removed:" << endl;
 				m_items[index]->linear(false);
@@ -287,7 +287,7 @@ namespace sdds {
 				cout << "Are you sure?" << endl;
 				Menu menu("Yes!");
 				if (menu.run(false, 0)) {
-					remove(index);
+					remove(index); //Removes the index and Saves the items
 					save();
 					cout << "Item removed!" << endl;
 				}
